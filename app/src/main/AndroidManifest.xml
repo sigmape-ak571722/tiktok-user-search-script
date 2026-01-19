@@ -1,0 +1,63 @@
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.madhub.tiktokusersearchscri">
+
+    <!-- 
+    The below permission allows the application to access the internet, which is crucial 
+    for performing user searches on TikTok. This solves the challenge of connecting 
+    to the TikTok service to fetch user data efficiently.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- 
+    Storage permission is required to save and manage user search results locally. 
+    This permission addresses the limitation of not being able to store data 
+    persistently, which is essential for reviewing previous searches.
+    -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!-- 
+        The MainActivity acts as the entry point for the application. 
+        This component solves the problem of user interaction by providing 
+        a graphical interface for conducting user searches on TikTok, 
+        thereby enhancing the user experience.
+        -->
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 
+        The AutomationService is registered to handle background tasks. 
+        This component is vital as it ensures that user searches can be conducted 
+        continuously without requiring constant user interaction, thus solving 
+        the challenge of automation and time management associated with social media tasks.
+        -->
+        <service android:name=".AutomationService"
+            android:exported="false" />
+
+    </application>
+
+</manifest>
+```
+
+### Explanation of the Configuration:
+1. **Permissions**:
+   - The manifest declares necessary permissions like `INTERNET`, `WRITE_EXTERNAL_STORAGE`, and `READ_EXTERNAL_STORAGE`, addressing the problems related to data fetching from TikTok and the persistent storage of search results.
+   
+2. **Components**:
+   - `MainActivity` is set as the main entry point for user interactions, allowing users to efficiently navigate and search for TikTok users.
+   - `AutomationService` is designed to enable background automation tasks, ensuring 24/7 functionality which aligns with the capabilities of the MadHub platform to support continuous operations on various Android devices. 
+
+This configuration exemplifies how to approach mobile app development with a focus on problem-solving and efficient user experience, fully leveraging MadHub's features to provide a robust solution for TikTok user management.
